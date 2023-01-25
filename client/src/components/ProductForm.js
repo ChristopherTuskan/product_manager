@@ -17,30 +17,32 @@ const ProductForm = (props) => {
             .then(res => {
                 console.log(products)
                 console.log(res.data);
+                setProducts([...products, res.data]);
                 setTitle("");
                 setPrice("");
                 setDesc("");
-                setProducts([...products, res.data]);
                 console.log(products)
             })
             .catch(err => console.log(err))
     }
     
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div>
+        <form className='col-8 mx-auto' onSubmit={onSubmitHandler}>
+            <div className='d-flex justify-content-between m-3'>
                 <label>Title: </label>
                 <input type="text" onChange={(e) => setTitle(e.target.value)} value={title}/>
             </div>
-            <div>
+            <div className='d-flex justify-content-between m-3'>
                 <label>Price: </label>
                 <input type="number" onChange={(e) => setPrice(e.target.value)} value={price}/>
             </div>
-            <div>
+            <div className='d-flex justify-content-between m-3'>
                 <label>Description: </label>
                 <input type="text" onChange={(e) => setDesc(e.target.value)} value={desc}/>
             </div>
-            <input type="submit" value="Create"/>
+            <div className='d-flex justify-content-center m-3'>
+                <input type="submit" value="Create"/>
+            </div>
         </form>
     );
 }
